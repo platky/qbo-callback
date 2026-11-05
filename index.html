@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>QuickBooks sign-in</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 15px/1.5 system-ui, sans-serif; max-width: 34rem; margin: 15vh auto; padding: 0 16px; }
+  a { color: #1f6feb; }
+</style>
+</head>
+<body>
+<!--
+  Intuit production apps only redirect to https, so this page hands the sign-in on to Command Center
+  on the same computer. It holds no keys; the code is single-use and worthless without the app secret.
+  Source: command-center/docs/qbo-callback/index.html
+-->
+<p>Sending you back to Command Center…</p>
+<p><a id="go" href="http://127.0.0.1:4100/auth/qbo/callback">Continue to Command Center</a></p>
+<script>
+  var target = 'http://127.0.0.1:4100/auth/qbo/callback' + location.search;
+  document.getElementById('go').href = target;
+  if (location.search) location.replace(target);
+</script>
+</body>
+</html>
